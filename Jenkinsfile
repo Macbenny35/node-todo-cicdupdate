@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'node-agent' }
+    agent any
     
     stages{
         stage('Code'){
@@ -16,7 +16,7 @@ pipeline {
             steps{
                 withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
         	     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                 sh 'docker push benjaz1/node-todo-test:latest'
+                 sh 'docker push Macbenny35/node-todo-test:latest'
                 }
             }
         }
